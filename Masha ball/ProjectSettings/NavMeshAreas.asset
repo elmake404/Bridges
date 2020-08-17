@@ -11,12 +11,12 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
+  - name: Water
+    cost: 10
+  - name: Wood
+    cost: 3
+  - name: Steel
+    cost: 2
   - name: 
     cost: 1
   - name: 
