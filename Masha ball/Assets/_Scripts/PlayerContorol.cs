@@ -9,8 +9,6 @@ public class PlayerContorol : MonoBehaviour
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _target;
-    [SerializeField]
-    float f;
     void Start()
     {
         _agent.updatePosition = false;
@@ -20,10 +18,8 @@ public class PlayerContorol : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 Pos = new Vector3(_agent.steeringTarget.x, 0.5f, _agent.steeringTarget.z);
-        f = (transform.position - Pos).magnitude;
         transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
         _agent.nextPosition = transform.position;
-
     }
 
 }
