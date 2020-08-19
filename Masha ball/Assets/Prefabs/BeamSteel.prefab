@@ -88,7 +88,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244021600528450819}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -103,10 +103,10 @@ GameObject:
   m_Component:
   - component: {fileID: 244021600764377239}
   - component: {fileID: -3982023106399467242}
-  - component: {fileID: 1495361285451877560}
+  - component: {fileID: 4445567603818093794}
   m_Layer: 0
   m_Name: BeamSteel
-  m_TagString: Untagged
+  m_TagString: Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,11 +138,11 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1495361285451877560
+--- !u!114 &4445567603818093794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 244021600764377233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Script: {fileID: 11500000, guid: 8336ea5ef12d4d442a2ea92a81353e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 0.15, y: 0.5, z: 4}
-  m_Center: {x: 0, y: 0.2, z: 0}
-  m_Area: 5
-  m_AffectedAgents: ffffffff
+  IsQuiescently: 0

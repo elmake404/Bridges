@@ -9,10 +9,8 @@ public class PlayerContorol : MonoBehaviour
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _target;
-    private Vector3 _agentTarget;
     [SerializeField]
-    List<Vector3> _way = new List<Vector3>(); 
-
+    float f;
     void Start()
     {
         _agent.updatePosition = false;
@@ -21,24 +19,11 @@ public class PlayerContorol : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RecordsWay();
-        }
-        //transform.position = Vector3.MoveTowards(transform.position, _agent.steeringTarget, 0.1f);
+        Vector3 Pos = new Vector3(_agent.steeringTarget.x, 0.5f, _agent.steeringTarget.z);
+        f = (transform.position - Pos).magnitude;
+        transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
+        _agent.nextPosition = transform.position;
+
     }
 
-    private void RecordsWay()
-    {
-        while (_way.Count<12)
-        {
-            _agent.nextPosition = _agent.steeringTarget;
-            if (_agent.steeringTarget != _agentTarget)
-            {
-                _agentTarget = _agent.steeringTarget;
-                _way.Add(_agentTarget);
-            }
-
-        }
-    }
 }
