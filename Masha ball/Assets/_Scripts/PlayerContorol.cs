@@ -11,15 +11,22 @@ public class PlayerContorol : MonoBehaviour
     private Transform _target;
     void Start()
     {
-        _agent.updatePosition = false;
-        _agent.SetDestination(_target.position);
     }
 
     void FixedUpdate()
     {
-        Vector3 Pos = new Vector3(_agent.steeringTarget.x, 0.5f, _agent.steeringTarget.z);
-        transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
-        _agent.nextPosition = transform.position;
+        if (LevelManager.IsStartGame)
+        {
+            Vector3 Pos = new Vector3(_agent.steeringTarget.x, 0.5f, _agent.steeringTarget.z);
+            transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
+            _agent.nextPosition = transform.position;
+        }
+    }
+    public void SetDestination()
+    {
+        _agent.updatePosition = false;
+        _agent.SetDestination(_target.position);
+
     }
 
 }

@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        
+        LevelManager.IsStartGame = false;
     }
 
     void Update()
