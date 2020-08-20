@@ -210,7 +210,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9efbfb7264a0ad40acb271d9bb84570, type: 2}
+  - {fileID: 2100000, guid: 6af9048f8d587dd4d93de33e58c5f402, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 8088586849640973621}
   - component: {fileID: 6229940452630240333}
   m_Layer: 0
-  m_Name: BeamWood
+  m_Name: BeamStel
   m_TagString: Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,5 +285,3 @@ MonoBehaviour:
   _mesh: {fileID: 8088586848835664860}
   _materialNew: {fileID: 2100000, guid: 021e7310effe29a45a071d083516681b, type: 2}
   _materialOld: {fileID: 0}
-  _beamsTrue: []
-  _beamsFalse: []

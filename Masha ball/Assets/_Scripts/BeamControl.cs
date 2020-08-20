@@ -6,31 +6,44 @@ public class BeamControl : MonoBehaviour
 {
     public bool IsQuiescently;
 
+    [SerializeField]
+    private List<PartsOfTheBeam> _partsOfTheBeams;
+    [SerializeField]
     private int _percentQuiescently;
+    [SerializeField]
+    private MeshRenderer _mesh;
+    [SerializeField]
+    private Material _materialNew, _materialOld;
 
     void Start()
     {
-
+        _materialOld = _mesh.material;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Earth")
+        if (Quiescently())
         {
-            _percentQuiescently++;
-        }
-        if (other.tag == "Beam")
-        {
-            if (other.GetComponent<BeamControl>().IsQuiescently)
-                _percentQuiescently++;
-        }
-        if (_percentQuiescently >= 2)
-        {
+            _mesh.material = _materialOld;
             IsQuiescently = true;
         }
+        else
+        {
+            _mesh.material = _materialNew;
+
+            IsQuiescently = false;
+        }
+
+    }
+    private bool Quiescently()
+    {
+        for (int i = 0; i < _partsOfTheBeams.Count; i++)
+        {
+            if (!_partsOfTheBeams[i].IsStand)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

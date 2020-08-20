@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Earth
   - Beam
+  - Floor
   layers:
   - Default
   - TransparentFX
