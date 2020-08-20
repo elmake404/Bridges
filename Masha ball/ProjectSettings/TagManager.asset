@@ -7,6 +7,7 @@ TagManager:
   - Earth
   - Beam
   - Floor
+  - Piston
   layers:
   - Default
   - TransparentFX
