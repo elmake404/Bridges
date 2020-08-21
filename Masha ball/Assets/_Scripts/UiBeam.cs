@@ -9,8 +9,6 @@ public class UiBeam : MonoBehaviour
     [SerializeField]
     private CanvasManager _canvasManager;
     [SerializeField]
-    private Transform _plane;
-    [SerializeField]
     private GameObject _beam;
     private BeamControl _beamControl;
     private Camera _cam;
@@ -23,6 +21,10 @@ public class UiBeam : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         _width = rectTransform.rect.width / 2;
         _height = rectTransform.rect.height / 2;
+        if (LevelManager.HeightUi < rectTransform.rect.height)
+        {
+            LevelManager.HeightUi = rectTransform.rect.height;
+        }
     }
 
     void Update()
@@ -36,8 +38,9 @@ public class UiBeam : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 Vector3 posWorold = _cam.transform.position - ((ray.direction) *
-                    (((_cam.transform.position.y - _plane.position.y) - 0.05f) / ray.direction.y)); ;
+                    ((LevelManager.Height - 0.04f) / ray.direction.y)); ;
                 _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
+                LevelManager.BeamControls.Add(_beamControl);
             }
         }
         else if (Input.GetMouseButton(0))
@@ -47,7 +50,7 @@ public class UiBeam : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 _beamControl.transform.position = _cam.transform.position - ((ray.direction) *
-                    (((_cam.transform.position.y - _plane.position.y) - 0.05f) / ray.direction.y));
+                    ((LevelManager.Height - 0.04f) / ray.direction.y));
 
             }
         }

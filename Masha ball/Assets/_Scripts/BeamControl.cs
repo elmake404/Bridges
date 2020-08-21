@@ -19,7 +19,6 @@ public class BeamControl : MonoBehaviour
     {
         _materialOld = _mesh.material;
     }
-
     void FixedUpdate()
     {
         if (Quiescently())
@@ -40,6 +39,28 @@ public class BeamControl : MonoBehaviour
         for (int i = 0; i < _partsOfTheBeams.Count; i++)
         {
             if (!_partsOfTheBeams[i].IsStand)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public bool Tightly()
+    {
+        for (int i = 0; i < _partsOfTheBeams.Count; i++)
+        {
+            if (!_partsOfTheBeams[i].IsTightly)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public bool ContainsBeam(BeamControl beam)
+    {
+        for (int i = 0; i < _partsOfTheBeams.Count; i++)
+        {
+            if (_partsOfTheBeams[i].ContainsMe(beam))
             {
                 return false;
             }

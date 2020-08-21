@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644771390975295920}
   - component: {fileID: 290713508719522059}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'piston1 '
   m_TagString: Piston
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 2786844043881322993}
   - component: {fileID: 1019356006509435609}
   - component: {fileID: 8198007291753479979}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1
   m_TagString: Beam
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000005, y: 1, z: 0.5}
+  m_Size: {x: 1.0000005, y: 1, z: 0.4}
   m_Center: {x: 0, y: 0, z: -0.25}
 --- !u!114 &1019356006509435609
 MonoBehaviour:
@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52b7df0639d2dc4f8b14b39c399e962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beamMain: {fileID: 6229940452630240333}
+  _beamsConnections: []
   IsStand: 0
   IsTightly: 0
 --- !u!54 &8198007291753479979
@@ -132,7 +134,7 @@ GameObject:
   - component: {fileID: 8567515254515715036}
   - component: {fileID: 1670957408032320912}
   - component: {fileID: 8123239874248308486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 2
   m_TagString: Beam
   m_Icon: {fileID: 0}
@@ -164,7 +166,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000005, y: 1, z: 0.5}
+  m_Size: {x: 1.0000005, y: 1, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0.25}
 --- !u!114 &1670957408032320912
 MonoBehaviour:
@@ -178,6 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52b7df0639d2dc4f8b14b39c399e962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beamMain: {fileID: 6229940452630240333}
+  _beamsConnections: []
   IsStand: 0
   IsTightly: 0
 --- !u!54 &8123239874248308486
@@ -206,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286658062650635701}
   - component: {fileID: 1241927301442904752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: piston2
   m_TagString: Piston
   m_Icon: {fileID: 0}
@@ -251,9 +255,10 @@ GameObject:
   - component: {fileID: 8088586848835664862}
   - component: {fileID: 8088586848835664861}
   - component: {fileID: 8088586848835664860}
+  - component: {fileID: 3973975808938978857}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,6 +324,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3973975808938978857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088586848835664857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000005, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8088586849640973623
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +349,7 @@ GameObject:
   - component: {fileID: 6229940452630240333}
   m_Layer: 0
   m_Name: BeamWood
-  m_TagString: Beam
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

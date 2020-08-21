@@ -9,10 +9,12 @@ public class CanvasManager : MonoBehaviour
     private Vector3 _oldPosObj, _startPosMouse;
 
     private bool _isCastDrag, _isCastTwist;
-    private float _rotationY;
+    private float _rotationY, _height;
 
     void Start()
     {
+        _height = GetComponent<RectTransform>().rect.height;
+
         _cam = Camera.main;
 
     }
@@ -31,7 +33,7 @@ public class CanvasManager : MonoBehaviour
                     _objMoving = hit.collider.transform.parent;
                     _oldPosObj = _objMoving.position;
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
-                        (((22.21f) - 0.05f) / ray.direction.y)));
+                        ((LevelManager.Height - 0.04f) / ray.direction.y)));
                 }
                 else if (hit.collider.tag == "Piston")
                 {
@@ -39,8 +41,8 @@ public class CanvasManager : MonoBehaviour
 
                     _objMoving = hit.collider.transform.parent;
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
-                        (((22.21f) - 0.05f) / ray.direction.y)));
-                    _rotationY = Quaternion.LookRotation(_startPosMouse - _objMoving.position).eulerAngles.y;
+                        ((LevelManager.Height - 0.04f) / ray.direction.y)));
+                    _rotationY = _objMoving.eulerAngles.y;
                 }
             }
         }
@@ -51,21 +53,29 @@ public class CanvasManager : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 _objMoving.position = _oldPosObj + ((_cam.transform.position - ((ray.direction) *
-                    (((22.21f) - 0.05f) / ray.direction.y))) - _startPosMouse);
+                    (((22.21f) - 0.04f) / ray.direction.y))) - _startPosMouse);
 
             }
             if (_isCastTwist)
             {
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
-                _startPosMouse = (_cam.transform.position - ((ray.direction) *
-                    (((22.21f) - 0.05f) / ray.direction.y)));
+                Vector3 nextPos = (_cam.transform.position - ((ray.direction) *
+                    (((22.21f) - 0.04f) / ray.direction.y)));
 
-                _objMoving.rotation = Quaternion.LookRotation(_startPosMouse - _objMoving.position);
+                float Y = _rotationY + (Quaternion.LookRotation(nextPos - _objMoving.position).eulerAngles.y)
+                    - Quaternion.LookRotation(_startPosMouse - _objMoving.position).eulerAngles.y;
+                _objMoving.eulerAngles = new Vector3(_objMoving.eulerAngles.x, Y, _objMoving.eulerAngles.z);
             }
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            if (_objMoving != null && Input.mousePosition.y > (_height - LevelManager.HeightUi))
+            {
+                LevelManager.BeamControls.Remove(_objMoving.GetComponent<BeamControl>());
+                Destroy(_objMoving.gameObject);
+            }
+
             if (_isCastDrag)
             {
                 _isCastDrag = false;
@@ -75,7 +85,6 @@ public class CanvasManager : MonoBehaviour
             {
                 _isCastTwist = false;
                 _objMoving = null;
-
             }
         }
     }

@@ -12,8 +12,15 @@ public class Bottom : MonoBehaviour
 
     public void StartGame()
     {
-        surface.BuildNavMesh();
-        _player.SetDestination();
-        LevelManager.IsStartGame = true;
+        if (LevelManager.CheckBeam())
+        {
+            surface.BuildNavMesh();
+            _player.SetDestination();
+            LevelManager.IsStartGame = true;
+        }
+        else
+        {
+            Debug.Log("Not all beams are standing");
+        }
     }
 }

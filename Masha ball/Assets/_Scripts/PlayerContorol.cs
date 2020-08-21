@@ -9,8 +9,13 @@ public class PlayerContorol : MonoBehaviour
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _target;
+    private Vector3 _nextTarget;
+
+    private float _timeCheckDestination;
     void Start()
     {
+        _timeCheckDestination = 0.5f;
+        _nextTarget = transform.position;
     }
 
     void FixedUpdate()
@@ -22,11 +27,19 @@ public class PlayerContorol : MonoBehaviour
             _agent.nextPosition = transform.position;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="Stars")
+        {
+            Destroy(other.gameObject);
+            _agent.SetDestination(_nextTarget);
+        }
+    }
+
     public void SetDestination()
     {
         _agent.updatePosition = false;
         _agent.SetDestination(_target.position);
-
     }
 
 }
