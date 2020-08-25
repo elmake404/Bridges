@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Bottom : MonoBehaviour
 {
-    [SerializeField]
-    private NavMeshSurface surface;
     [SerializeField]
     private PlayerContorol _player;
 
@@ -14,7 +12,7 @@ public class Bottom : MonoBehaviour
     {
         if (LevelManager.CheckBeam())
         {
-            surface.BuildNavMesh();
+            LevelManager.Surface.BuildNavMesh();
             _player.SetDestination();
             LevelManager.IsStartGame = true;
         }
@@ -22,5 +20,10 @@ public class Bottom : MonoBehaviour
         {
             Debug.Log("Not all beams are standing");
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

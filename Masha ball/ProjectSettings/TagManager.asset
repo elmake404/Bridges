@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Piston
   - Stars
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - player
   - Working
-  - 
+  - Wood
   - 
   - 
   - 

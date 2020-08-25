@@ -53,15 +53,16 @@ public class CanvasManager : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 _objMoving.position = _oldPosObj + ((_cam.transform.position - ((ray.direction) *
-                    (((22.21f) - 0.04f) / ray.direction.y))) - _startPosMouse);
+                    ((LevelManager.Height - 0.04f) / ray.direction.y))) - _startPosMouse);
 
             }
+
             if (_isCastTwist)
             {
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 Vector3 nextPos = (_cam.transform.position - ((ray.direction) *
-                    (((22.21f) - 0.04f) / ray.direction.y)));
+                    ((LevelManager.Height - 0.04f) / ray.direction.y)));
 
                 float Y = _rotationY + (Quaternion.LookRotation(nextPos - _objMoving.position).eulerAngles.y)
                     - Quaternion.LookRotation(_startPosMouse - _objMoving.position).eulerAngles.y;

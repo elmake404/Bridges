@@ -67,6 +67,10 @@ public class PartsOfTheBeam : MonoBehaviour
 
         for (int i = 0; i < _beams.Count; i++)
         {
+            if (_beams[i]==null)
+            {
+                continue;
+            }
             if (_beams[i].Tightly())
             {
                 if (!_beamsConnections.Contains(_beams[i]))
@@ -74,6 +78,7 @@ public class PartsOfTheBeam : MonoBehaviour
                     _beamsConnections.Add(_beams[i]);
                 }
             }
+
             if (_beams[i].IsQuiescently && !_beams[i].Tightly()
                 && !_beamsConnections.Contains(_beams[i]) && _beams[i].ContainsBeam(_beamMain))
             {
@@ -84,6 +89,7 @@ public class PartsOfTheBeam : MonoBehaviour
             {
                 _beamsConnections.Remove(_beams[i]);
             }
+
             for (int j = 0; j < _beamsConnections.Count; j++)
             {
                 countConnections++;

@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beamMain: {fileID: 6229940452630240333}
+  _beamsConnections: []
   IsStand: 0
   IsTightly: 0
 --- !u!54 &8198007291753479979
@@ -136,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beamMain: {fileID: 6229940452630240333}
+  _beamsConnections: []
   IsStand: 0
   IsTightly: 0
 --- !u!54 &8123239874248308486
@@ -391,3 +393,4 @@ MonoBehaviour:
   _mesh: {fileID: 8088586848835664860}
   _materialNew: {fileID: 2100000, guid: 021e7310effe29a45a071d083516681b, type: 2}
   _materialOld: {fileID: 0}
+  _timeToStand: 0.04

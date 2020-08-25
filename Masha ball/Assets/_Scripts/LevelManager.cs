@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,12 +10,17 @@ public class LevelManager : MonoBehaviour
     public static bool IsStartGame;
     public static float Height,HeightUi;
     public static List<BeamControl> BeamControls;
+    public static NavMeshSurface Surface;
     #endregion
     [SerializeField]
     private Transform _plane;
+    [SerializeField]
+    private NavMeshSurface _surface;
+
 
     void Awake()
     {
+        Surface = _surface;
         BeamControls = new List<BeamControl>();
         Height = Camera.main.transform.position.y - _plane.position.y;
         IsStartGame = false;

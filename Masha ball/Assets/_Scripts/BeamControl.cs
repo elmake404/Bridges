@@ -15,24 +15,42 @@ public class BeamControl : MonoBehaviour
     [SerializeField]
     private Material _materialNew, _materialOld;
 
+    [SerializeField]
+    private float _timeToStand;
+    private float _timeToStandConst;
+
     void Start()
     {
+        _timeToStandConst = _timeToStand;
+
         _materialOld = _mesh.material;
     }
     void FixedUpdate()
     {
-        if (Quiescently())
+        if (LevelManager.IsStartGame)
+        {
+            if (!Quiescently())
+                Destroy(gameObject);
+        }
+
+        if (Quiescently()&& _timeToStand<=0)
         {
             _mesh.material = _materialOld;
             IsQuiescently = true;
         }
         else
         {
+            if(!Quiescently())
+            _timeToStand = _timeToStandConst;
+
             _mesh.material = _materialNew;
 
             IsQuiescently = false;
         }
-
+        if (_timeToStand>0)
+        {
+            _timeToStand -= Time.fixedDeltaTime;
+        }
     }
     private bool Quiescently()
     {

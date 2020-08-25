@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 8088586848835664861}
   - component: {fileID: 8088586848835664860}
   - component: {fileID: 3973975808938978857}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Beam
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 6229940452630240333}
   m_Layer: 0
   m_Name: BeamWood
-  m_TagString: Untagged
+  m_TagString: Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,3 +393,4 @@ MonoBehaviour:
   _mesh: {fileID: 8088586848835664860}
   _materialNew: {fileID: 2100000, guid: 021e7310effe29a45a071d083516681b, type: 2}
   _materialOld: {fileID: 0}
+  _timeToStand: 0.04
