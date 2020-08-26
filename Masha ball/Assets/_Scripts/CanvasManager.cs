@@ -35,11 +35,11 @@ public class CanvasManager : MonoBehaviour
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - 0.04f) / ray.direction.y)));
                 }
-                else if (hit.collider.tag == "Piston")
+                else if (_objMoving!= null)
                 {
                     _isCastTwist = true;
 
-                    _objMoving = hit.collider.transform.parent;
+                    //_objMoving = hit.collider.transform.parent;
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - 0.04f) / ray.direction.y)));
                     _rotationY = _objMoving.eulerAngles.y;
@@ -57,7 +57,7 @@ public class CanvasManager : MonoBehaviour
 
             }
 
-            if (_isCastTwist)
+            if (_isCastTwist && !_isCastDrag)
             {
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
@@ -80,14 +80,19 @@ public class CanvasManager : MonoBehaviour
             if (_isCastDrag)
             {
                 _isCastDrag = false;
-                _objMoving = null;
+                //_objMoving = null;
             }
             if (_isCastTwist)
             {
                 _isCastTwist = false;
-                _objMoving = null;
+                //_objMoving = null;
             }
         }
+    }
+
+    public void NewObjMov(Transform transform)
+    {
+        _objMoving = transform;
     }
 
 }

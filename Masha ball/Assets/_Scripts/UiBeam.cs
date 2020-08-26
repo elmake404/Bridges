@@ -41,6 +41,8 @@ public class UiBeam : MonoBehaviour
                     ((LevelManager.Height - 0.04f) / ray.direction.y)); ;
                 _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
                 LevelManager.BeamControls.Add(_beamControl);
+                _canvasManager.NewObjMov(_beamControl.transform);
+
             }
         }
         else if (Input.GetMouseButton(0))
