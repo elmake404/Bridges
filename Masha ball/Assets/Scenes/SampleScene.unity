@@ -724,6 +724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasManager: {fileID: 577796852}
   _beam: {fileID: 8088586849640973623, guid: c9b9e39186d80cc4697e9669e6f8b8f9, type: 3}
+  _climb: 0.04
 --- !u!1 &548812886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasManager: {fileID: 577796852}
   _beam: {fileID: 8088586849640973623, guid: d3d7e682012153a40bfcec49d135cb23, type: 3}
+  _climb: 0.035
 --- !u!1 &1080504188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1509,7 @@ PrefabInstance:
     - target: {fileID: 4042307220004590352, guid: f32d0dc6ada1c5e43bfe45613f58376a,
         type: 3}
       propertyPath: orthographic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4042307220004590352, guid: f32d0dc6ada1c5e43bfe45613f58376a,
         type: 3}

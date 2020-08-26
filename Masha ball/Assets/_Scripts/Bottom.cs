@@ -12,6 +12,7 @@ public class Bottom : MonoBehaviour
     {
         if (LevelManager.CheckBeam())
         {
+            LevelManager.BeamOffFaces();
             LevelManager.Surface.BuildNavMesh();
             _player.SetDestination();
             LevelManager.IsStartGame = true;

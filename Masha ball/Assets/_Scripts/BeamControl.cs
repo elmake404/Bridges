@@ -7,6 +7,8 @@ public class BeamControl : MonoBehaviour
     public bool IsQuiescently;
 
     [SerializeField]
+    private GameObject _faces;
+    [SerializeField]
     private List<PartsOfTheBeam> _partsOfTheBeams;
     [SerializeField]
     private int _percentQuiescently;
@@ -30,6 +32,7 @@ public class BeamControl : MonoBehaviour
         if (LevelManager.IsStartGame)
         {
             if (!Quiescently())
+            
                 Destroy(gameObject);
         }
 
@@ -84,5 +87,13 @@ public class BeamControl : MonoBehaviour
             }
         }
         return true;
+    }
+    public void OnFaces()
+    {
+        _faces.SetActive(true);
+    }
+    public void OffFaces()
+    {
+        _faces.SetActive(false);
     }
 }

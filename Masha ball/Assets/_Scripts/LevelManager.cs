@@ -42,4 +42,11 @@ public class LevelManager : MonoBehaviour
         }
         return true;
     }
+    public static void BeamOffFaces()
+    {
+        for (int i = 0; i < BeamControls.Count; i++)
+        {
+            BeamControls[i].OffFaces();
+        }
+    }
 }

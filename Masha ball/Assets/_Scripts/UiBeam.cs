@@ -13,6 +13,8 @@ public class UiBeam : MonoBehaviour
     private BeamControl _beamControl;
     private Camera _cam;
 
+    [SerializeField]
+    private float _climb;
     private float _width, _height;
     private bool _isCast;
     void Start()
@@ -38,9 +40,10 @@ public class UiBeam : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 Vector3 posWorold = _cam.transform.position - ((ray.direction) *
-                    ((LevelManager.Height - 0.04f) / ray.direction.y)); ;
+                    ((LevelManager.Height - _climb) / ray.direction.y)); 
                 _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
                 LevelManager.BeamControls.Add(_beamControl);
+                _beamControl.OnFaces();
                 _canvasManager.NewObjMov(_beamControl.transform);
 
             }
@@ -52,7 +55,7 @@ public class UiBeam : MonoBehaviour
                 Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                 _beamControl.transform.position = _cam.transform.position - ((ray.direction) *
-                    ((LevelManager.Height - 0.04f) / ray.direction.y));
+                    ((LevelManager.Height - _climb) / ray.direction.y));
 
             }
         }

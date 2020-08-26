@@ -29,8 +29,14 @@ public class CanvasManager : MonoBehaviour
             {
                 if ((hit.collider.tag == "Beam"))
                 {
+                    if (_objMoving.gameObject!= hit.collider.transform.parent.gameObject)
+                    {
+                        _objMoving.GetComponent<BeamControl>().OffFaces();
+                        _objMoving = hit.collider.transform.parent;
+                        _objMoving.GetComponent<BeamControl>().OnFaces();
+                    }
+
                     _isCastDrag = true;
-                    _objMoving = hit.collider.transform.parent;
                     _oldPosObj = _objMoving.position;
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - 0.04f) / ray.direction.y)));
@@ -71,7 +77,7 @@ public class CanvasManager : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (_objMoving != null && Input.mousePosition.y > (_height - LevelManager.HeightUi))
+            if (_isCastDrag && _objMoving != null && Input.mousePosition.y > (_height - LevelManager.HeightUi))
             {
                 LevelManager.BeamControls.Remove(_objMoving.GetComponent<BeamControl>());
                 Destroy(_objMoving.gameObject);
@@ -92,6 +98,10 @@ public class CanvasManager : MonoBehaviour
 
     public void NewObjMov(Transform transform)
     {
+        if (_objMoving!= null)
+        {
+            _objMoving.GetComponent<BeamControl>().OffFaces();
+        }
         _objMoving = transform;
     }
 
