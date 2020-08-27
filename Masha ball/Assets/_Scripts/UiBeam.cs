@@ -23,10 +23,10 @@ public class UiBeam : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         _width = rectTransform.rect.width / 2;
         _height = rectTransform.rect.height / 2;
-        if (LevelManager.HeightUi < rectTransform.rect.height)
-        {
-            LevelManager.HeightUi = rectTransform.rect.height;
-        }
+        //if (LevelManager.HeightUi < rectTransform.rect.height)
+        //{
+        //    LevelManager.HeightUi = rectTransform.rect.height;
+        //}
     }
 
     void Update()

@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     #region Static variables
     public static bool IsStartGame;
-    public static float Height,HeightUi;
+    public static float Height/*,HeightUi*/;
     public static List<BeamControl> BeamControls;
     public static NavMeshSurface Surface;
     #endregion

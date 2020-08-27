@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
     private Camera _cam;
     private Transform _objMoving;
     private Vector3 _oldPosObj, _startPosMouse;
+    [SerializeField]
+    private RectTransform _removalZone;
 
     private bool _isCastDrag, _isCastTwist;
-    private float _rotationY, _height;
+    private float _rotationY, _height, _width;
 
     void Start()
     {
-        _height = GetComponent<RectTransform>().rect.height;
-
+        RectTransform rect = GetComponent<RectTransform>();
+        _height = rect.rect.height;
+        _width = rect.rect.width;
         _cam = Camera.main;
 
     }
@@ -77,11 +81,19 @@ public class CanvasManager : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (_isCastDrag && _objMoving != null && Input.mousePosition.y > (_height - LevelManager.HeightUi))
+            if (_isCastDrag && _objMoving != null 
+                && Input.mousePosition.y > (_height - _removalZone.rect.height)
+                && Input.mousePosition.x < (_removalZone.rect.width))
             {
                 LevelManager.BeamControls.Remove(_objMoving.GetComponent<BeamControl>());
                 Destroy(_objMoving.gameObject);
             }
+
+            Debug.Log(Input.mousePosition.x);
+            Debug.Log(_removalZone.rect.width );
+            Debug.Log("---------------------------------------------");
+            Debug.Log(Input.mousePosition.y);
+            Debug.Log(_height - _removalZone.rect.height);
 
             if (_isCastDrag)
             {
