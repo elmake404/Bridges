@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 48119814}
   - component: {fileID: 48119813}
   - component: {fileID: 48119812}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Target
   m_TagString: Stars
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 1
-  m_TileSize: 20
+  m_TileSize: 120
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.022
   m_BuildHeightMesh: 0
