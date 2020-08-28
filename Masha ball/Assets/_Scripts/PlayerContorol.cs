@@ -36,7 +36,6 @@ public class PlayerContorol : MonoBehaviour
                     GetComponent<Rigidbody>().isKinematic = false;
                     Vector3 Pos = new Vector3(_currentTarget.x, transform.position.y, _currentTarget.z);
                     transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
-                    //_agent.nextPosition = transform.position;
                 }
             }
             if (_timeCheckDestination>0)
@@ -48,13 +47,9 @@ public class PlayerContorol : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Stars")
-        {            
-            LevelManager.Surface.BuildNavMesh();
-            _currentTarget = _nextTarget;
+        {
+            StartCoroutine(GoBack());
             Destroy(other.gameObject);
-
-            _agent.SetDestination(_nextTarget);
-            _timeCheckDestination = 0.3f;
         }
         if (other.tag == "Water")
         {
@@ -67,6 +62,18 @@ public class PlayerContorol : MonoBehaviour
         {
             Destroy(other.transform.parent.gameObject);
         }
+
+    }
+    private IEnumerator GoBack()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        LevelManager.Surface.BuildNavMesh();
+        _currentTarget = _nextTarget;
+
+        //yield return new WaitForSeconds(0.6f);
+        _agent.SetDestination(_nextTarget);
+        _timeCheckDestination = 0.3f;
 
     }
     public void SetDestination()

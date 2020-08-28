@@ -33,11 +33,19 @@ public class CanvasManager : MonoBehaviour
             {
                 if ((hit.collider.tag == "Beam"))
                 {
-                    if (_objMoving.gameObject!= hit.collider.transform.parent.gameObject)
+                    if (_objMoving == null)
                     {
-                        _objMoving.GetComponent<BeamControl>().OffFaces();
                         _objMoving = hit.collider.transform.parent;
                         _objMoving.GetComponent<BeamControl>().OnFaces();
+                    }
+                    else
+                    {
+                        if (_objMoving.gameObject != hit.collider.transform.parent.gameObject)
+                        {
+                            _objMoving.GetComponent<BeamControl>().OffFaces();
+                            _objMoving = hit.collider.transform.parent;
+                            _objMoving.GetComponent<BeamControl>().OnFaces();
+                        }
                     }
 
                     _isCastDrag = true;
@@ -45,7 +53,7 @@ public class CanvasManager : MonoBehaviour
                     _startPosMouse = (_cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - 0.04f) / ray.direction.y)));
                 }
-                else if (_objMoving!= null)
+                else if (_objMoving != null)
                 {
                     _isCastTwist = true;
 
@@ -81,36 +89,37 @@ public class CanvasManager : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (_isCastDrag && _objMoving != null 
+            if (_isCastDrag && _objMoving != null
                 && Input.mousePosition.y > (_height - _removalZone.rect.height)
                 && Input.mousePosition.x < (_removalZone.rect.width))
             {
-                LevelManager.BeamControls.Remove(_objMoving.GetComponent<BeamControl>());
+                BeamControl beam = _objMoving.GetComponent<BeamControl>();
+                beam.UiBeamMain.ReturnBeam();
+                LevelManager.BeamControls.Remove(beam);
                 Destroy(_objMoving.gameObject);
+                _objMoving = null;
             }
 
-            Debug.Log(Input.mousePosition.x);
-            Debug.Log(_removalZone.rect.width );
-            Debug.Log("---------------------------------------------");
-            Debug.Log(Input.mousePosition.y);
-            Debug.Log(_height - _removalZone.rect.height);
+            //Debug.Log(Input.mousePosition.x);
+            //Debug.Log(_removalZone.rect.width );
+            //Debug.Log("---------------------------------------------");
+            //Debug.Log(Input.mousePosition.y);
+            //Debug.Log(_height - _removalZone.rect.height);
 
             if (_isCastDrag)
             {
                 _isCastDrag = false;
-                //_objMoving = null;
             }
             if (_isCastTwist)
             {
                 _isCastTwist = false;
-                //_objMoving = null;
             }
         }
     }
 
     public void NewObjMov(Transform transform)
     {
-        if (_objMoving!= null)
+        if (_objMoving != null)
         {
             _objMoving.GetComponent<BeamControl>().OffFaces();
         }

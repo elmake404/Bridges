@@ -21,6 +21,8 @@ public class BeamControl : MonoBehaviour
     private float _timeToStand;
     private float _timeToStandConst;
 
+    [HideInInspector]
+    public UiBeam UiBeamMain;
     void Start()
     {
         _timeToStandConst = _timeToStand;

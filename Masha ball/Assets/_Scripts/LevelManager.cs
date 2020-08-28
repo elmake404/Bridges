@@ -26,11 +26,6 @@ public class LevelManager : MonoBehaviour
         IsStartGame = false;
     }
 
-    void Update()
-    {
-        
-    }
-
     public static bool CheckBeam()
     {
         for (int i = 0; i < BeamControls.Count; i++)
