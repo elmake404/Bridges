@@ -7,10 +7,15 @@ using UnityEngine.AI;
 public class PlayerContorol : MonoBehaviour
 {
     [SerializeField]
+    private Finish _finish;
+    [SerializeField]
     private NavMeshAgent _agent;
     [SerializeField]
     private Transform _target;
+    [SerializeField]
+    private Rigidbody _rb;
     private Vector3 _nextTarget, _currentTarget;
+    
 
     private float _timeCheckDestination;
     void Start()
@@ -27,13 +32,13 @@ public class PlayerContorol : MonoBehaviour
             {
                 if (_agent.hasPath)
                 {
-                    Vector3 Pos = new Vector3(_agent.steeringTarget.x, 0.5f, _agent.steeringTarget.z);
+                    Vector3 Pos = new Vector3(_agent.steeringTarget.x, transform.position.y, _agent.steeringTarget.z);
                     transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
                     _agent.nextPosition = transform.position;
                 }
                 else
                 {
-                    GetComponent<Rigidbody>().isKinematic = false;
+                    _rb.isKinematic = false;
                     Vector3 Pos = new Vector3(_currentTarget.x, transform.position.y, _currentTarget.z);
                     transform.position = Vector3.MoveTowards(transform.position, Pos, 0.1f);
                 }
@@ -48,13 +53,21 @@ public class PlayerContorol : MonoBehaviour
     {
         if (other.tag == "Stars")
         {
+            _finish.Activation();
             StartCoroutine(GoBack());
             Destroy(other.gameObject);
         }
         if (other.tag == "Water")
         {
             LevelManager.IsStartGame = false;
+            LevelManager.IsGameLose = true;
         }
+        if (other.tag == "Finish")
+        {
+            LevelManager.IsGameWin = true;
+            _rb.isKinematic = false;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {

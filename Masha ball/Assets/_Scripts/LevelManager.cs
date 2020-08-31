@@ -7,11 +7,15 @@ using UnityEngine.AI;
 public class LevelManager : MonoBehaviour
 {
     #region Static variables
-    public static bool IsStartGame;
+    public static bool IsStartGame,IsStartFlowe,IsGameWin,IsGameLose;
     public static float Height/*,HeightUi*/;
     public static List<BeamControl> BeamControls;
     public static NavMeshSurface Surface;
+    public static PlayerContorol Player;
     #endregion
+
+    [SerializeField]
+    private PlayerContorol _player;
     [SerializeField]
     private Transform _plane;
     [SerializeField]
@@ -20,10 +24,14 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
+        IsGameLose = false;
+        IsGameWin = false;
+        IsStartGame = false;
+
+        Player = _player;
         Surface = _surface;
         BeamControls = new List<BeamControl>();
         Height = Camera.main.transform.position.y - _plane.position.y;
-        IsStartGame = false;
     }
 
     public static bool CheckBeam()
@@ -42,6 +50,17 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < BeamControls.Count; i++)
         {
             BeamControls[i].OffFaces();
+        }
+    }
+    public static bool EndOfTheGame()
+    {
+        if (IsGameWin||IsGameLose)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

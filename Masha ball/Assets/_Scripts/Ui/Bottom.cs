@@ -5,16 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Bottom : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerContorol _player;
-
     public void StartGame()
     {
         if (LevelManager.CheckBeam())
         {
             LevelManager.BeamOffFaces();
             LevelManager.Surface.BuildNavMesh();
-            _player.SetDestination();
+            LevelManager.Player.SetDestination();
             LevelManager.IsStartGame = true;
         }
         else

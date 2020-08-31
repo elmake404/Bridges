@@ -37,7 +37,8 @@ public class UiBeam : MonoBehaviour
     void Update()
     {
         _textNamberBeam.text = _namberBeam.ToString();
-        if (!LevelManager.IsStartGame)
+
+        if (!LevelManager.IsStartGame && LevelManager.IsStartFlowe)
         {
             if (Input.GetMouseButtonDown(0) && (_namberBeam > 0))
             {
@@ -46,12 +47,15 @@ public class UiBeam : MonoBehaviour
                 {
                     _namberBeam--;
                     _isCast = true;
+
                     Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
                     Vector3 posWorold = _cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - _climb) / ray.direction.y));
+                    
                     _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
                     _beamControl.UiBeamMain = this;
+                    
                     LevelManager.BeamControls.Add(_beamControl);
                     _beamControl.OnFaces();
                     _canvasManager.NewObjMov(_beamControl.transform);
