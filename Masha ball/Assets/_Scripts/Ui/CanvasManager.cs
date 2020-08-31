@@ -16,7 +16,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private RectTransform _removalZone;
 
-    private bool _isCastDrag, _isCastTwist,_isDrag;
+    private bool _isCastDrag, _isCastTwist, _isDrag;
     private float _rotationY, _height, _width;
     private void Awake()
     {
@@ -150,14 +150,16 @@ public class CanvasManager : MonoBehaviour
             _winUI.SetActive(true);
         }
     }
-    public void NewObjMov(Transform transform)
+    public void NewObjMov(Transform transform, Ray ray)
     {
         if (_objMoving != null)
         {
             _objMoving.GetComponent<BeamControl>().OffFaces();
         }
         _objMoving = transform;
-        //_oldPosObj = _objMoving.position;
+        _oldPosObj = _objMoving.position;
+        _startPosMouse = (_cam.transform.position - ((ray.direction) *
+    ((LevelManager.Height - 0.04f) / ray.direction.y)));
 
         _isDrag = true;
         _isCastDrag = true;

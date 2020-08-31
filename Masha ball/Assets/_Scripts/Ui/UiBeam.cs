@@ -58,7 +58,7 @@ public class UiBeam : MonoBehaviour
                     
                     LevelManager.BeamControls.Add(_beamControl);
                     _beamControl.OnFaces();
-                    _canvasManager.NewObjMov(_beamControl.transform);
+                    _canvasManager.NewObjMov(_beamControl.transform,ray);
 
                 }
             }
