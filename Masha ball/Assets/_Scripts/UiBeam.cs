@@ -37,42 +37,34 @@ public class UiBeam : MonoBehaviour
     void Update()
     {
         _textNamberBeam.text = _namberBeam.ToString();
-        if (Input.GetMouseButtonDown(0) && (_namberBeam > 0))
+        if (!LevelManager.IsStartGame)
         {
-            if (Mathf.Abs((transform.position.x + _width) - Input.mousePosition.x) <= _width
-                && Mathf.Abs((transform.position.y - _height) - Input.mousePosition.y) <= _height)
+            if (Input.GetMouseButtonDown(0) && (_namberBeam > 0))
             {
-                _namberBeam--;
-                _isCast = true;
-                Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+                if (Mathf.Abs((transform.position.x + _width) - Input.mousePosition.x) <= _width
+                    && Mathf.Abs((transform.position.y - _height) - Input.mousePosition.y) <= _height)
+                {
+                    _namberBeam--;
+                    _isCast = true;
+                    Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
 
-                Vector3 posWorold = _cam.transform.position - ((ray.direction) *
-                    ((LevelManager.Height - _climb) / ray.direction.y));
-                _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
-                _beamControl.UiBeamMain = this;
-                LevelManager.BeamControls.Add(_beamControl);
-                _beamControl.OnFaces();
-                _canvasManager.NewObjMov(_beamControl.transform);
+                    Vector3 posWorold = _cam.transform.position - ((ray.direction) *
+                        ((LevelManager.Height - _climb) / ray.direction.y));
+                    _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
+                    _beamControl.UiBeamMain = this;
+                    LevelManager.BeamControls.Add(_beamControl);
+                    _beamControl.OnFaces();
+                    _canvasManager.NewObjMov(_beamControl.transform);
 
+                }
             }
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            if (_isCast)
+            else if (Input.GetMouseButtonUp(0))
             {
-                Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
-
-                _beamControl.transform.position = _cam.transform.position - ((ray.direction) *
-                    ((LevelManager.Height - _climb) / ray.direction.y));
-
-            }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            if (_isCast)
-            {
-                _isCast = false;
-                _beamControl = null;
+                if (_isCast)
+                {
+                    _isCast = false;
+                    _beamControl = null;
+                }
             }
         }
     }
