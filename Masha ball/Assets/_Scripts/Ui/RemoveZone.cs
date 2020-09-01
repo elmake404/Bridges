@@ -8,15 +8,14 @@ public class RemoveZone : MonoBehaviour
     private CanvasManager _canvasManager;
     private float _width, _height;
 
-    void Start()
+    private void Start()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
         _width = rectTransform.rect.width / 2;
         _height = rectTransform.rect.height / 2;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!LevelManager.IsStartGame && LevelManager.IsStartFlowe)
         {

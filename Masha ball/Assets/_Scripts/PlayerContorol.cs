@@ -48,6 +48,15 @@ public class PlayerContorol : MonoBehaviour
                 _timeCheckDestination -= Time.fixedDeltaTime;
             }
         }
+        else
+        {
+            if (transform.position.y>0.5f)
+            {
+                Vector3 pos = transform.position;
+                pos.y = 0.5f;
+                transform.position = Vector3.MoveTowards(transform.position,pos,0.1f);
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -75,7 +84,6 @@ public class PlayerContorol : MonoBehaviour
         {
             Destroy(other.transform.parent.gameObject);
         }
-
     }
     private IEnumerator GoBack()
     {
