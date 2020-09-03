@@ -12,8 +12,11 @@ public class UiBeam : MonoBehaviour
     private Text _textNamberBeam;
     [SerializeField]
     private GameObject _beam;
+    [SerializeField]
+    private Transform _anchor;
     private BeamControl _beamControl;
     private Camera _cam;
+    
 
     [SerializeField]
     private float _climb;
@@ -26,12 +29,9 @@ public class UiBeam : MonoBehaviour
         _textNamberBeam.text = _namberBeam.ToString();
         _cam = Camera.main;
         RectTransform rectTransform = GetComponent<RectTransform>();
-        _width = rectTransform.rect.width / 2;
-        _height = rectTransform.rect.height / 2;
-        //if (LevelManager.HeightUi < rectTransform.rect.height)
-        //{
-        //    LevelManager.HeightUi = rectTransform.rect.height;
-        //}
+        _width = _anchor.position.x - transform.position.x;
+
+        _height = _anchor.position.x - transform.position.x;
     }
 
     void Update()
@@ -42,8 +42,8 @@ public class UiBeam : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && (_namberBeam > 0))
             {
-                if (Mathf.Abs((transform.position.x + _width) - Input.mousePosition.x) <= _width
-                    && Mathf.Abs((transform.position.y - _height) - Input.mousePosition.y) <= _height)
+                if (Mathf.Abs(transform.position.x - Input.mousePosition.x) <= _width
+                    && Mathf.Abs(transform.position.y -Input.mousePosition.y) <= _height)
                 {
                     _namberBeam--;
                     _isCast = true;
@@ -52,13 +52,14 @@ public class UiBeam : MonoBehaviour
 
                     Vector3 posWorold = _cam.transform.position - ((ray.direction) *
                         ((LevelManager.Height - _climb) / ray.direction.y));
-                    
+
                     _beamControl = Instantiate(_beam, posWorold, _beam.transform.rotation).GetComponent<BeamControl>();
                     _beamControl.UiBeamMain = this;
-                    
+
                     LevelManager.BeamControls.Add(_beamControl);
                     _beamControl.OnFaces();
-                    _canvasManager.NewObjMov(_beamControl.transform,ray);
+                    _canvasManager.NewObjMov(_beamControl.transform, ray);
+
 
                 }
             }

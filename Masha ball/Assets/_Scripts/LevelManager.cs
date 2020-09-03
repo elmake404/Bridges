@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
     {
         //if (PlayerPrefs.GetInt("Level")<1)
         //{
-        //    PlayerPrefs.SetInt("Level", 1);
+        //PlayerPrefs.SetInt("Level",0 );
         //}
 
         IsGameLose = false;
