@@ -14,9 +14,9 @@ NavMeshProjectSettings:
   - name: Water
     cost: 500
   - name: Wood
-    cost: 3
+    cost: 1
   - name: Steel
-    cost: 2
+    cost: 1
   - name: 
     cost: 1
   - name: 

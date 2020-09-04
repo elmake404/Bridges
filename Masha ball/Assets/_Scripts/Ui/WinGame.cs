@@ -14,7 +14,7 @@ public class WinGame : MonoBehaviour
 
             if (PlayerPrefs.GetInt("Level")>=SceneManager.sceneCountInBuildSettings)
             {
-                PlayerPrefs.SetInt("Level", 0);
+                PlayerPrefs.SetInt("Level", 1);
             }
 
             SceneManager.LoadScene(PlayerPrefs.GetInt("Level"));

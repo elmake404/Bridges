@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 8088586848835664861}
   - component: {fileID: 8088586848835664860}
   - component: {fileID: 3973975808938978857}
+  - component: {fileID: 4513667689906920787}
   m_Layer: 10
   m_Name: Cube
   m_TagString: Beam
@@ -768,6 +769,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000005, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4513667689906920787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088586848835664857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 5
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8088586849640973623
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,9 +841,10 @@ MonoBehaviour:
   - {fileID: 1670957408032320912}
   _percentQuiescently: 0
   _mesh: {fileID: 8088586848835664860}
-  _materialNew: {fileID: 2100000, guid: 021e7310effe29a45a071d083516681b, type: 2}
+  _materialNew: {fileID: 2100000, guid: 14bbc1acbc7b16c4db3140cceb20925a, type: 2}
   _materialOld: {fileID: 0}
   _timeToStand: 0.04
+  UiBeamMain: {fileID: 0}
 --- !u!1 &9110449482471505881
 GameObject:
   m_ObjectHideFlags: 0
