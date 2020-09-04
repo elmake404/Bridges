@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5625844993531597193}
   - component: {fileID: 3731010182769316231}
   - component: {fileID: 5495337511518980710}
+  - component: {fileID: 3435950833663948515}
   m_Layer: 0
   m_Name: pCylinder1
   m_TagString: Untagged
@@ -79,6 +80,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &3435950833663948515
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166855662210234474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b25f8098011214043a56a29b2b2e54d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8341338382461415214
 GameObject:
   m_ObjectHideFlags: 0
