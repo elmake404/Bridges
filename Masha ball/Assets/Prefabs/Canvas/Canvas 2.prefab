@@ -1885,6 +1885,7 @@ MonoBehaviour:
   _inGameUI: {fileID: 3315806707427779027}
   _winUI: {fileID: 3316613307733672631}
   _lostUI: {fileID: 3316538774971134049}
+  _textWin: {fileID: 3428722718853285355}
   _removalZone: {fileID: 1617815431583575186}
 --- !u!114 &1332823499890630153
 MonoBehaviour:
@@ -2472,7 +2473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3251161772849483521
 RectTransform:
   m_ObjectHideFlags: 0

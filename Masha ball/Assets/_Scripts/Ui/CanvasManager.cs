@@ -9,7 +9,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject _menuUI, _inGameUI, _winUI, _lostUI;
     #endregion
-
+    [SerializeField]
+    private Text _textWin;
     private Camera _cam;
     private Transform _objMoving;
     private Vector3 _oldPosObj, _startPosMouse;
@@ -28,6 +29,7 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
+        _textWin.text = "Level " + PlayerPrefs.GetInt("Level");
         RectTransform rect = GetComponent<RectTransform>();
         _height = rect.rect.height;
         _width = rect.rect.width;

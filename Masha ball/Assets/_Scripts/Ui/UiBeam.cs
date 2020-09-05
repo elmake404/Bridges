@@ -24,6 +24,13 @@ public class UiBeam : MonoBehaviour
     private int _namberBeam;
     private float _width, _height;
     private bool _isCast;
+    private void Awake()
+    {
+        if (_namberBeam <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
     void Start()
     {
         _textNamberBeam.text = _namberBeam.ToString();

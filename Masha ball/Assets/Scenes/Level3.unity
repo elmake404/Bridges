@@ -643,6 +643,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630324245576755242, guid: 5b112b43b4861dc4d9ea2404e1d505d3,
+        type: 3}
+      propertyPath: _namberBeam
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1399430676242825122, guid: 5b112b43b4861dc4d9ea2404e1d505d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,6 +816,11 @@ PrefabInstance:
     - target: {fileID: 5788232356969414507, guid: 5b112b43b4861dc4d9ea2404e1d505d3,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884806133932921180, guid: 5b112b43b4861dc4d9ea2404e1d505d3,
+        type: 3}
+      propertyPath: _namberBeam
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6806641903664169890, guid: 5b112b43b4861dc4d9ea2404e1d505d3,
